@@ -2,7 +2,7 @@
 
 
 ### How to install
-`pip install text-analyzer`
+`pip install lyser`
 
 
 ### A class to perform text analysis on a given corpus.
