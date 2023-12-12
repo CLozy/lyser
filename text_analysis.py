@@ -1,7 +1,7 @@
 from nltk.parse.malt import MaltParser
 from nltk.parse import DependencyGraph
 from nltk.tag import pos_tag
-import string
+
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.stem import PorterStemmer
@@ -11,13 +11,17 @@ from nltk.tokenize import word_tokenize
 
 from nltk.corpus import reuters
 
+from wordcloud import WordCloud
+import plotly.express as px
+import string
+
 # nltk.download('reuters')
 # nltk.download('punkt')
 # nltk.download('stopwords')
 # nltk.download('wordnet')
 
 # Sample Data
-# sample_text = reuters.raw(fileids=reuters.fileids(categories='crude')[0])
+sample_text = reuters.raw(fileids=reuters.fileids(categories='crude')[0])
 # print(sample_text)
 
 class TextAnalyzer:
@@ -45,10 +49,33 @@ class TextAnalyzer:
         return tokens
     
 
-
+    #pos tagging
     def pos_tagging(self):
         tagged_words = pos_tag(self.pipeline())
         return tagged_words
 
 
-# dependency parsing
+    #creating word_cloud
+    def visualize_word_cloud(self):
+        
+        # Generate a WordCloud object
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(self.corpus)
+
+        # Get the word frequencies from the WordCloud object
+        word_frequencies = wordcloud.words_
+
+        # Create an interactive Word Cloud using plotly
+        fig = px.imshow(wordcloud.to_array(), title='Interactive Word Cloud')
+
+        # Customize the layout
+        fig.update_layout(coloraxis_showscale=False)
+        fig.update_xaxes(showticklabels=False)
+        fig.update_yaxes(showticklabels=False)
+
+        # Display the interactive Word Cloud
+        fig.show()
+
+
+analyzer = TextAnalyzer(sample_text)
+
+analyzer.visualize_word_cloud()
