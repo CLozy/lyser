@@ -21,14 +21,44 @@ import string
 # nltk.download('wordnet')
 
 # Sample Data
-sample_text = reuters.raw(fileids=reuters.fileids(categories='crude')[0])
+# sample_text = reuters.raw(fileids=reuters.fileids(categories='crude')[0])
 # print(sample_text)
 
 class TextAnalyzer:
+    """
+        A class to perform text analysis on a given corpus.
+        Attributes:
+            corpus (str): The corpus to analyze.
+            
+        Methods:
+            pipeline(): A function to perform text analysis on a given corpus.
+            Returns a list of tokens.
+            e.g. ['the', 'cat', 'sat', 'on', 'the', 'mat']
+            
+            pos_tagging(): A function to perform POS tagging on a given corpus.
+            Returns a list of tuples containing the word and its POS tag.
+            e.g. [('the', 'DT'), ('cat', 'NN'), ('sat', 'VB'), ('on', 'IN'), ('the', 'DT'), ('mat', 'NN')]
+            
+            visualize_word_cloud(): A function to visualize the word cloud of a given corpus.
+            
+        Example:
+            analyzer = TextAnalyzer(corpus=sample_text)
+            analyzer.pipeline()
+            analyzer.pos_tagging()
+            analyzer.visualize_word_cloud()
+        
+    """
+   
     def __init__(self, corpus=None):
         self.corpus  = corpus
         
     def pipeline(self):
+        """
+            A function to perform text analysis on a given corpus.
+            Returns a list of tokens.
+            e.g. ['the', 'cat', 'sat', 'on', 'the', 'mat']
+            
+        """
         # TOKENIZATION
         # pst = PunktSentenceTokenizer()
         # print(pst.tokenize(self.corpus))
@@ -51,12 +81,23 @@ class TextAnalyzer:
 
     #pos tagging
     def pos_tagging(self):
+        """
+            A function to perform POS tagging on a given corpus.
+            Returns a list of tuples containing the word and its POS tag.
+            e.g. [('the', 'DT'), ('cat', 'NN'), ('sat', 'VB'), ('on', 'IN'), ('the', 'DT'), ('mat', 'NN')]
+            
+        """
         tagged_words = pos_tag(self.pipeline())
         return tagged_words
 
 
     #creating word_cloud
     def visualize_word_cloud(self):
+        """
+            A function to visualize the word cloud of a given corpus.
+            Returns a Word Cloud visualization of the given corpus.
+           
+        """
         
         # Generate a WordCloud object
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(self.corpus)
@@ -65,7 +106,7 @@ class TextAnalyzer:
         word_frequencies = wordcloud.words_
 
         # Create an interactive Word Cloud using plotly
-        fig = px.imshow(wordcloud.to_array(), title='Interactive Word Cloud')
+        fig = px.imshow(wordcloud.to_array(), title='Word Cloud')
 
         # Customize the layout
         fig.update_layout(coloraxis_showscale=False)
@@ -76,6 +117,4 @@ class TextAnalyzer:
         fig.show()
 
 
-analyzer = TextAnalyzer(sample_text)
 
-analyzer.visualize_word_cloud()
