@@ -1,1 +1,1 @@
-## A text processing package avalailable on PYPI
+## A text processing python package avalailable on PYPI
