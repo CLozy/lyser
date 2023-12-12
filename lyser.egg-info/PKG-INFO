@@ -1,13 +1,13 @@
 Metadata-Version: 2.1
 Name: lyser
-Version: 1.1
+Version: 1.2
 Description-Content-Type: text/markdown
 
 ## A text processing python package 
 
 
 ### How to install
-`pip install text-analyzer`
+`pip install lyser`
 
 
 ### A class to perform text analysis on a given corpus.
