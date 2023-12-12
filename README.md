@@ -1,4 +1,4 @@
-## A text processing python package avalailable on PYPI
+## A text processing python package 
 
 
 ### How to install
