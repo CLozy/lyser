@@ -1,0 +1,7 @@
+# Ignore PyPI distribution files
+dist/
+build/
+*.egg-info/
+
+*.gz
+*.env
