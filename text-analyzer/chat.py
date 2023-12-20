@@ -34,12 +34,12 @@ conversation.run("Translate it to mandarin")
 #simplest and commonly used ConversationBufferMemory , allows storing of messages in buffers, when called in chains it retuns allof the messages it has stored 
 from langchain.memory import ConversationBufferMemory
 
-memory = ConversationBufferMemory()
-memory.chat_memory.add_user_message("I love programming.")
-memory.chat_memory.add_ai_message("I love programming too.")
+# memory = ConversationBufferMemory()
+# memory.chat_memory.add_user_message("I love programming.")
+# memory.chat_memory.add_ai_message("I love programming too.")
 
 #load from memory
-memory.load_memory_variables({})
+# memory.load_memory_variables({})
 
 # sliding window of most recent k interactions using ConversationBufferWindowMemory
 from langchain.memory import ConversationBufferWindowMemory
