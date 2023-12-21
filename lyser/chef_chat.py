@@ -30,12 +30,17 @@ from langchain.agents import AgentExecutor
 
 
 load_dotenv()
-os.environ["OPENAI_API_KEY"] = getpass.getpass()
 
 # chef chat class
 
 
 class ChefChat:
+    #create docstring
+
+    """
+    A class that creates a chatbot agent that returns recipes of meals from cook pdf books 
+
+    """
     def __init__(self, folder_path, query):
         self.chat = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
         self.folder_path = folder_path
@@ -43,18 +48,35 @@ class ChefChat:
         self.memory_key = "chat_history"
 
     def data_loader(self):
+        """
+        A function that loads the pdf books in a folder and returns a list of documents.
+        Returns:
+            list: A list of documents. Each document is a dictionary with a 'page_content' key and 'metadata' key.
+        
+        """
         # iterate through a folder and load the pdfs in it using pypdfloader
         loader = PyPDFDirectoryLoader(self.folder_path)
         docs = loader.load()
         return docs
 
     def chat_summary(self):
+        """
+        A function that creates a chat summary 
+        Returns:
+            chat_memory: A AgentTokenBufferMemory chat summary memory.
+
+        """
         chat_memory = AgentTokenBufferMemory(
             llm=self.chat, memory_key=self.memory_key)
         return chat_memory
 
    
-    def rag_pipeline(self):
+    def rag_agent(self):
+        """
+        A function that creates a rag agent that returns recipes of meals from cook pdf books 
+        Returns:
+            agent_result: A dictionary with the output of the rag agent.
+        """
         # create a rag pipeline
         docs = self.data_loader()
 
