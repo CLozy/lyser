@@ -100,7 +100,7 @@ class ChefChat:
 
         # custom prompt template
         system_message = SystemMessage(
-            content="You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Always say 'Happy cooking' at the end of the answer with retrieved recipes.")
+            content="You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Always say 'Happy cooking' at the end of the answer with retrieved recipes. And dont answer anything out of cooking context, just say i am chef chat and only know how to cook.")
         rag_prompt = OpenAIFunctionsAgent.create_prompt(system_message=system_message, extra_prompt_messages=[
                                                         MessagesPlaceholder(variable_name=self.memory_key)])
 
@@ -117,5 +117,5 @@ class ChefChat:
         return agent_result['output']
 
 
-chef_chat = ChefChat(folder_path="data", query="What is the recipe for pineapple chicken?")
-print(chef_chat.rag_agent())
+# chef_chat = ChefChat(folder_path="data", query="who is dean cook")
+# print(chef_chat.rag_agent())
