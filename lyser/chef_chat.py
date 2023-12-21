@@ -25,7 +25,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain.memory import ConversationSummaryMemory
 
 from langchain.agents.agent_toolkits import create_retriever_tool
-from langchain.agents.openai_functions_agent.agent_token_buffer_memory import AgentTokenBufferMemory
+from langchain.agents.openai_functions_agent.agent_token_buffer_memory import (AgentTokenBufferMemory,)
 from langchain.agents import AgentExecutor
 
 
@@ -95,7 +95,7 @@ class ChefChat:
 
         # retriever tool
         retriever_tool = create_retriever_tool(
-            retriever, "search recipes", "searches and returns recipes of meals")
+            retriever, "search_recipes", "searches and returns recipes of meals")
         tools = [retriever_tool]
 
         # custom prompt template
@@ -114,4 +114,8 @@ class ChefChat:
 
         agent_result = agent_executor({"input": self.query})
 
-        return agent_result
+        return agent_result['output']
+
+
+chef_chat = ChefChat(folder_path="data", query="What is the recipe for pineapple chicken?")
+print(chef_chat.rag_agent())
