@@ -1,4 +1,5 @@
-## A python package that has classes that processes text and creates a rag chef chat agent that gives cooking tips and recipes. 
+## lyser
+A python package that has classes that processes text and creates a rag chef chat agent that gives cooking tips and recipes. 
 
 
 ### How to install
