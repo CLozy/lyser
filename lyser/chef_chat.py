@@ -118,4 +118,4 @@ class ChefChat:
 
 
 # chef_chat = ChefChat(folder_path="data", query="who is dean cook")
-# print(chef_chat.rag_agent())
+#  print(chef_chat.rag_agent())

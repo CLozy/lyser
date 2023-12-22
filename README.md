@@ -32,7 +32,6 @@ A python package that has classes that processes text and creates a rag chef cha
             folder_path (str, pdf): path to folder_path with recipe files
             query (str): user input
             
-
             
         Methods:
             data_loader(): A function that loads the pdf books in a folder and returns a list of documents.
