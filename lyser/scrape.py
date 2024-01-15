@@ -14,7 +14,6 @@ import pprint
 load_dotenv()
 
 
-
 #Scraping with extraction of tuko news webpage
 #LLM with function calling
 #Using Function (e.g., OpenAI) with an extraction chain, we avoid having to change your code constantly when websites change.
